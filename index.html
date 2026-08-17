@@ -182,6 +182,36 @@ nav.stuck{background:rgba(15,9,5,0.96);backdrop-filter:blur(16px);padding:1rem 3
 .f-submit{width:100%;background:var(--gold);color:var(--bark);padding:1.1rem;font-family:"DM Sans",sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;border:none;cursor:pointer;margin-top:1.25rem;transition:all .3s}
 .f-submit:hover{background:var(--gold2)}
 
+/* AUGUST PROMO */
+.promo-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:1.5rem;background:rgba(7,4,2,.78);backdrop-filter:blur(12px)}
+.promo-modal.on{display:flex}
+.promo-card{position:relative;width:min(760px,100%);max-height:calc(100dvh - 3rem);overflow:auto;background:linear-gradient(145deg,#1d1008 0%,#0f0905 58%,#291807 100%);border:1px solid rgba(212,169,106,.42);box-shadow:0 30px 90px rgba(0,0,0,.5);display:grid;grid-template-columns:1fr .8fr}
+.promo-main{padding:2.5rem}
+.promo-side{background:rgba(184,147,90,.1);border-left:1px solid rgba(184,147,90,.22);padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;gap:2rem}
+.promo-art{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;border:1px solid rgba(245,237,216,.18);margin-bottom:1.5rem}
+.promo-close{position:absolute;top:1rem;right:1rem;width:38px;height:38px;border:1px solid rgba(245,237,216,.24);background:rgba(15,9,5,.68);color:#fff;font-size:1.2rem;cursor:pointer;transition:all .25s}
+.promo-close:hover{border-color:var(--gold);color:var(--gold)}
+.promo-kicker{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+.promo-title{font-family:"Playfair Display",serif;font-size:clamp(2.35rem,5vw,4.6rem);font-weight:400;line-height:.95;color:#fff;margin-bottom:1.1rem}
+.promo-title i{font-style:italic;color:var(--sand);display:block}
+.promo-copy{font-size:.96rem;line-height:1.8;color:rgba(240,234,224,.66);max-width:34rem}
+.promo-price{margin:1.5rem 0 1.75rem;display:inline-flex;align-items:flex-end;gap:.7rem}
+.promo-price span{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,234,224,.48);padding-bottom:.42rem}
+.promo-price strong{font-family:"Playfair Display",serif;font-size:3.7rem;font-weight:400;color:var(--gold)}
+.promo-options{display:flex;flex-direction:column;gap:.75rem}
+.promo-option{padding:1rem 1.1rem;background:rgba(255,255,255,.035);border:1px solid rgba(184,147,90,.16)}
+.promo-option b{display:block;font-size:.84rem;font-weight:400;color:#fff;margin-bottom:.25rem}
+.promo-option small{font-size:.72rem;color:rgba(240,234,224,.45)}
+.promo-valid{font-size:.72rem;line-height:1.7;color:rgba(240,234,224,.48)}
+.promo-actions{display:flex;flex-direction:column;gap:.75rem}
+.promo-wa,.promo-link{display:inline-flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;font-family:"DM Sans",sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:.85rem 1.1rem;transition:all .25s}
+.promo-wa{background:var(--gold);color:var(--bark)}
+.promo-wa:hover{background:var(--gold2);transform:translateY(-1px)}
+.promo-link{border:1px solid rgba(245,237,216,.25);color:rgba(245,237,216,.8)}
+.promo-link:hover{border-color:var(--gold);color:var(--gold)}
+.promo-row{border-color:rgba(212,169,106,.55);background:rgba(184,147,90,.13)}
+.promo-badge{display:inline-block;margin-left:.5rem;color:var(--gold);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase}
+
 /* FOOTER */
 footer{background:#070402;padding:5rem 3.5rem 2.5rem;border-top:1px solid var(--border)}
 .foot-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:4rem;max-width:1300px;margin:0 auto 4rem}
@@ -220,6 +250,9 @@ footer{background:#070402;padding:5rem 3.5rem 2.5rem;border-top:1px solid var(--
   .gallery-cell{height:180px}
   .editorial-bg{background-attachment:scroll}
   .brochure-grid{grid-template-columns:1fr 1fr}
+  .promo-card{grid-template-columns:1fr}
+  .promo-side{border-left:none;border-top:1px solid rgba(184,147,90,.22)}
+  .promo-main,.promo-side{padding:2rem}
   .pkg-sidebar{position:static}
   .pkg-tabs{flex-direction:row;overflow-x:auto}
   .pkg-btn{white-space:nowrap;border-bottom:none;border-right:1px solid var(--border)}
@@ -293,6 +326,38 @@ footer{background:#070402;padding:5rem 3.5rem 2.5rem;border-top:1px solid var(--
     <span></span><span></span><span></span>
   </div>
 </nav>
+
+<div class="promo-modal" id="promoModal" aria-hidden="true">
+  <div class="promo-card" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
+    <button class="promo-close" type="button" onclick="closePromo()" aria-label="Close promotion">x</button>
+    <div class="promo-main">
+      <p class="promo-kicker">August Relaxation</p>
+      <h2 class="promo-title" id="promoTitle">Relaxte <i>prijzen</i></h2>
+      <p class="promo-copy">Geniet deze maand van Mokisa's wellness combinaties. Kies je favoriete combinatie en reserveer direct via WhatsApp.</p>
+      <div class="promo-price"><span>Nu voor</span><strong>SRD 2000</strong></div>
+      <div class="promo-options">
+        <div class="promo-option">
+          <b>Sweti, Dampu &amp; Relaxmassage</b>
+          <small>Een complete Maroon wellness combinatie voor diepe ontspanning.</small>
+        </div>
+        <div class="promo-option">
+          <b>Podoscrub, Sweti &amp; Relaxmassage</b>
+          <small>Scrub, steam en massage in een verzorgende sessie.</small>
+        </div>
+      </div>
+    </div>
+    <div class="promo-side">
+      <div>
+        <img class="promo-art" src="images/august-relaxation.jpeg" alt="August Relaxation actie bij Mokisa Wellness">
+        <p class="promo-valid">Actie geldig van 11 t/m 29 augustus. Laat ons weten waarvoor jij kiest via WhatsApp of telefoon.</p>
+      </div>
+      <div class="promo-actions">
+        <a class="promo-wa" href="https://wa.me/5978712055?text=Hallo%20Mokisa%2C%20ik%20wil%20gebruikmaken%20van%20de%20August%20Relaxation%20actie.%20Ik%20kies%20voor%3A%20" target="_blank" rel="noopener">Reserveer via WhatsApp</a>
+        <a class="promo-link" href="#packages" onclick="closePromo()">Bekijk pakketten</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="home" style="padding:0">
@@ -467,10 +532,10 @@ footer{background:#070402;padding:5rem 3.5rem 2.5rem;border-top:1px solid var(--
             <div class="pkg-row"><div><div class="pkg-row-name">Dampu &amp; Relax</div><div class="pkg-row-sub">120 min</div></div><div class="pkg-row-price">SRD 1,300</div></div>
             <div class="pkg-row"><div><div class="pkg-row-name">Dampu &amp; Deep Tissue</div><div class="pkg-row-sub">120 min</div></div><div class="pkg-row-price">SRD 1,350</div></div>
             <div class="pkg-row"><div><div class="pkg-row-name">Sweti &amp; Relax</div><div class="pkg-row-sub">90 min</div></div><div class="pkg-row-price">SRD 1,200</div></div>
-            <div class="pkg-row"><div><div class="pkg-row-name">Sweti, Dampu &amp; Relax</div><div class="pkg-row-sub">150 min</div></div><div class="pkg-row-price">SRD 1,750</div></div>
+            <div class="pkg-row promo-row"><div><div class="pkg-row-name">Sweti, Dampu &amp; Relax <span class="promo-badge">August actie</span></div><div class="pkg-row-sub">150 min · actie geldig 11 t/m 29 augustus</div></div><div class="pkg-row-price">SRD 2,000</div></div>
             <div class="pkg-row"><div><div class="pkg-row-name">Sweti, Dampu &amp; Deep Tissue</div><div class="pkg-row-sub">150 min</div></div><div class="pkg-row-price">SRD 1,800</div></div>
             <div class="pkg-row"><div><div class="pkg-row-name">Podo, Dampu &amp; Relax</div><div class="pkg-row-sub">150 min</div></div><div class="pkg-row-price">SRD 2,000</div></div>
-            <div class="pkg-row"><div><div class="pkg-row-name">Podo, Sweti &amp; Relax</div><div class="pkg-row-sub">120 min</div></div><div class="pkg-row-price">SRD 1,850</div></div>
+            <div class="pkg-row promo-row"><div><div class="pkg-row-name">Podoscrub, Sweti &amp; Relax <span class="promo-badge">August actie</span></div><div class="pkg-row-sub">120 min · actie geldig 11 t/m 29 augustus</div></div><div class="pkg-row-price">SRD 2,000</div></div>
             <div class="pkg-row"><div><div class="pkg-row-name">Podo, Dampu &amp; Deep Tissue</div><div class="pkg-row-sub">120 min</div></div><div class="pkg-row-price">SRD 2,050</div></div>
           </div>
           <div class="pkg-footer"><p class="pkg-note">*excl. 10% BTW</p><button class="btn-sm" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Package</button></div>
@@ -563,8 +628,8 @@ footer{background:#070402;padding:5rem 3.5rem 2.5rem;border-top:1px solid var(--
       <p class="s-body">Fill in the form and our team will confirm your appointment within 24 hours. We look forward to welcoming you.</p>
       <div class="contact-list">
         <div class="c-row"><div class="c-ico">✉</div><div><div class="c-lbl">Email</div><div class="c-val">info@mokisawellness.com</div></div></div>
-        <div class="c-row"><div class="c-ico">☎</div><div><div class="c-lbl">Phone / WhatsApp</div><div class="c-val">+597 000-0000</div></div></div>
-        <div class="c-row"><div class="c-ico">⌖</div><div><div class="c-lbl">Location</div><div class="c-val">Paramaribo, Suriname</div></div></div>
+        <div class="c-row"><div class="c-ico">☎</div><div><div class="c-lbl">Phone / WhatsApp</div><div class="c-val">+597 871-2055 | 0491900</div></div></div>
+        <div class="c-row"><div class="c-ico">⌖</div><div><div class="c-lbl">Location</div><div class="c-val">Dr. Sophie Redmondstraat 231, Paramaribo</div></div></div>
         <div class="c-row"><div class="c-ico">◷</div><div><div class="c-lbl">Hours</div><div class="c-val">Mon–Sat · 9:00 – 18:00</div></div></div>
       </div>
     </div>
@@ -594,8 +659,9 @@ footer{background:#070402;padding:5rem 3.5rem 2.5rem;border-top:1px solid var(--
               </optgroup>
               <optgroup label="Traditional Packages">
                 <option>Sweti &amp; Dampu — SRD 1,200</option>
-                <option>Sweti, Dampu &amp; Relax — SRD 1,750</option>
+                <option>August Relaxation: Sweti, Dampu &amp; Relax - SRD 2,000</option>
                 <option>Podo, Dampu &amp; Relax — SRD 2,000</option>
+                <option>August Relaxation: Podoscrub, Sweti &amp; Relax - SRD 2,000</option>
               </optgroup>
               <optgroup label="Signature Packages">
                 <option>Package+ — SRD 2,500</option>
@@ -686,6 +752,30 @@ function subForm(e){
   b.style.background='#3a5030';
   b.disabled=true;
 }
+
+const promoModal=document.getElementById('promoModal');
+function openPromo(){
+  if(!promoModal)return;
+  promoModal.classList.add('on');
+  promoModal.setAttribute('aria-hidden','false');
+}
+function closePromo(){
+  if(!promoModal)return;
+  promoModal.classList.remove('on');
+  promoModal.setAttribute('aria-hidden','true');
+  sessionStorage.setItem('mokisaPromoClosed','true');
+}
+window.addEventListener('load',()=>{
+  if(sessionStorage.getItem('mokisaPromoClosed')!=='true'){
+    setTimeout(openPromo,700);
+  }
+});
+window.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&promoModal.classList.contains('on'))closePromo();
+});
+promoModal.addEventListener('click',e=>{
+  if(e.target===promoModal)closePromo();
+});
 </script>
 </body>
 </html>
